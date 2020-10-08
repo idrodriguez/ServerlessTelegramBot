@@ -29,15 +29,10 @@ jobs:
         pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
         dotnet build --configuration Release --output ./output
         popd
-  test:
-    runs-on: windows-latest   
-    steps:
+      
     - name: Test
       run: dotnet test --no-restore --verbosity normal
 
-  deploy:
-    runs-on: windows-latest   
-    steps:
     - name: 'Run Azure Functions Action'
       uses: Azure/functions-action@v1
       id: fa
